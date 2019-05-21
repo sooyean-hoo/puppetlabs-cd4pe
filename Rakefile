@@ -209,7 +209,7 @@ namespace :test_environment do
   end
 
 	desc "Set up a test environment for CD4PE"
-	task :setup, [:environment_type, :pe_version, :pe_source_provider, :cd4pe_install_type, :cd4pe_image, :cd4pe_version] => :provision do |t, args|
+	task :setup, [:environment_type, :pe_version, :pe_source_provider, :cd4pe_install_type, :cd4pe_version, :cd4pe_db_provider, :cd4pe_storage_provider] => :provision do |t, args|
     # Provision some test nodes and perform installation/configuration of PE & CD4PE
     include BoltSpec::Run
     inventory_hash = inventory_hash_from_inventory_file
@@ -219,8 +219,9 @@ namespace :test_environment do
       :pe_version => '2019.1.0',
       :pe_source_provider => 's3',
       :cd4pe_install_type => 'installer_task',
-      :cd4pe_image => 'pcr-internal.puppet.net/pipelines/pfi',
       :cd4pe_version => 'latest',
+      :cd4pe_db_provider => 'postgres',
+      :cd4pe_storage_provider => 'DISK',
     )
     params = {
       'environment_type' => args[:environment_type],
@@ -229,6 +230,8 @@ namespace :test_environment do
       'cd4pe_install_type' => args[:cd4pe_install_type],
       'cd4pe_image' => args[:cd4pe_image],
       'cd4pe_version' => args[:cd4pe_version],
+      'cd4pe_db_provider' => args[:cd4pe_db_provider],
+      'cd4pe_storage_provider' => args[:cd4pe_storage_provider]
     }
     result = run_plan('cd4pe_test_tasks::setup_test_environment',
       params,
@@ -246,6 +249,7 @@ namespace :test_environment do
 	desc "Teardown the CD4PE acceptance test hosts"
 	task :teardown do
     # Teardown the test environment
+    # TODO: Run a Bolt plan to handle teardown of api resources before de-provisioning nodes
     inventory_hash = inventory_hash_from_inventory_file
     targets = find_targets(inventory_hash, nil)
     targets.each  { |t|

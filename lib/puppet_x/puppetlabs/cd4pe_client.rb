@@ -118,7 +118,7 @@ module PuppetX::Puppetlabs
             osEndpoint: endpoint,
             osDiskRoot: '/disk',
             osBucket: bucket,
-            osPrefix: prefix,
+            osPathPrefix: prefix,
             osCredKey: access_key,
             osCredSecret: secret_key,
           },

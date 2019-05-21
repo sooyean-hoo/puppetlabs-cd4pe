@@ -47,5 +47,6 @@ plan cd4pe_test_tasks::install_pe_mono(
   run_task('pe_xl::rbac_token', $pe_host,
     password => $console_password
   )
+
   return "Successfully installed PE on target ${pe_host}"
 }
