@@ -57,7 +57,7 @@ class cd4pe::root_config(
   }
 
   if ($install_shared_job_hardware) {
-    warn("The Distelli agent has been deprecated in favor of using the Puppet agent for job hardware. Please migrate job hardware servers to use the Puppet agent: https://puppet.com/docs/continuous-delivery/latest/agent_migration.html")
+    warn('The Distelli agent has been deprecated in favor of using the Puppet agent for job hardware. Please migrate job hardware servers to use the Puppet agent: https://puppet.com/docs/continuous-delivery/latest/agent_migration.html')
     $job_hardware_installed = cd4pe::has_job_hardware($web_ui_endpoint, $root_email, $root_password)
     if(!$job_hardware_installed) {
       $creds_hash = cd4pe::get_agent_credentials($web_ui_endpoint, $root_email, $root_password)
@@ -65,9 +65,9 @@ class cd4pe::root_config(
       if($creds_hash) {
         exec { 'wait for CD4PE':
           require => Cd4pe_root_config[$web_ui_endpoint],
-          before => Class["pipelines::agent"],
-          command => "sleep 1",
-          path => "/usr/bin:/bin"
+          before  => Class['pipelines::agent'],
+          command => 'sleep 1',
+          path    => '/usr/bin:/bin'
         }
 
         class { 'pipelines::agent':

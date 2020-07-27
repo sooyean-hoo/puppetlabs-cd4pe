@@ -54,7 +54,7 @@ class cd4pe::db::postgres(
   $pg_user = 'pe-postgres'
   $pg_group = 'pe-postgres'
 
-  $ssl_dir = "/etc/puppetlabs/puppet/ssl"
+  $ssl_dir = '/etc/puppetlabs/puppet/ssl'
   $client_pem_key = "${ssl_dir}/private_keys/${certname}.pem"
   $client_cert    = "${ssl_dir}/certs/${certname}.pem"
   $client_ca_cert    = "${ssl_dir}/certs/ca.pem"
