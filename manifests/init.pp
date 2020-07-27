@@ -36,7 +36,7 @@ class cd4pe (
   }
 
   # Restrict to linux only?
-  include docker
+  #include docker
   include cd4pe::anchors
 
   $data_root_dir = '/etc/puppetlabs/cd4pe'
