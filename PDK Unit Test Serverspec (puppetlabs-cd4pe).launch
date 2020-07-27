@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.ui.externaltools.ProgramLaunchConfigurationType">
+    <stringAttribute key="bad_container_name" value="PDKValidate"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="/usr/bin/make"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="test_serverspec"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/puppetlabs-cd4pe}"/>
+</launchConfiguration>
